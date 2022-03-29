@@ -2,9 +2,9 @@
 
 namespace Hemengeliriz\ParamposLaravel;
 
+use Hemengeliriz\ParamposLaravel\Commands\ParamposLaravelCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Hemengeliriz\ParamposLaravel\Commands\ParamposLaravelCommand;
 
 class ParamposLaravelServiceProvider extends PackageServiceProvider
 {
