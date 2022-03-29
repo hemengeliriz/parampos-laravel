@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "hemengeliriz/parampos-laravel",
+    "description": "This is my package parampos-laravel",
     "keywords": [
-        ":vendor_name",
+        "hemengeliriz",
         "laravel",
-        ":package_slug"
+        "parampos-laravel"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/hemengeliriz/parampos-laravel",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "hemengeliriz",
+            "email": "dev@hemengeliriz.com",
             "role": "Developer"
         }
     ],
@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Hemengeliriz\\ParamposLaravel\\": "src",
+            "Hemengeliriz\\ParamposLaravel\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Hemengeliriz\\ParamposLaravel\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -54,10 +54,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Hemengeliriz\\ParamposLaravel\\ParamposLaravelServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "ParamposLaravel": "Hemengeliriz\\ParamposLaravel\\Facades\\ParamposLaravel"
             }
         }
     },
