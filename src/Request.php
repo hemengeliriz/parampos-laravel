@@ -2,6 +2,7 @@
 
 namespace Hemengeliriz\ParamposLaravel;
 
+use GuzzleHttp\Client;
 use Illuminate\Support\Str;
 
 class Request
@@ -10,28 +11,21 @@ class Request
     {
         $baseUrl = $baseUrl . ($extraRequestMethod ? "&op=" . $extraRequestMethod : "");
 
-        $ch = curl_init();
-        curl_setopt_array($ch, [
-            CURLOPT_URL => $baseUrl,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => $xml,
-            CURLOPT_HTTPHEADER => [
-                'Content-type: text/xml',
+        $client = new Client();
+        $response = $client->request('POST', $baseUrl, [
+            'headers' => [
+                'Content-Type' => 'text/xml',
             ],
+            'body' => $xml,
         ]);
-        $result = curl_exec($ch);
-        curl_close($ch);
+
+        $response = $response->getBody()->getContents();
+        $response = strtr($response, ['</soap:' => '</', '<soap:' => '<']);
+        $response = json_decode(json_encode(simplexml_load_string($response)), true)['Body'];
 
         $methodName = Str::camel("parse" . $extraRequestMethod . "Response");
         if (method_exists($this, $methodName)) {
-            $result = $this->$methodName($result);
+            $result = $this->$methodName($response);
         }
 
         return $result;
@@ -39,25 +33,11 @@ class Request
 
     private function parseSHA2B64Response($response)
     {
-        preg_match("'<SHA2B64Result>(.*?)</SHA2B64Result>'si", $response, $match);
-
-        return $match[1];
+        return $response['SHA2B64Response']['SHA2B64Result'];
     }
 
     private function parsePosOdemeResponse($response)
     {
-        $res = [];
-        preg_match("'<Islem_ID>(.*?)</Islem_ID>'si", $response, $match);
-        $res['Islem_ID'] = $match[1];
-        preg_match("'<UCD_URL>(.*?)</UCD_URL>'si", $response, $match);
-        $res['UCD_URL'] = $match[1];
-        preg_match("'<Sonuc>(.*?)</Sonuc>'si", $response, $match);
-        $res['Sonuc'] = $match[1];
-        preg_match("'<Sonuc_Str>(.*?)</Sonuc_Str>'si", $response, $match);
-        $res['Sonuc_Str'] = $match[1];
-        preg_match("'<Banka_Sonuc_Kod>(.*?)</Banka_Sonuc_Kod>'si", $response, $match);
-        $res['Banka_Sonuc_Kod'] = $match[1];
-
-        return $res;
+        return $response['Pos_OdemeResponse']['Pos_OdemeResult'];
     }
 }
