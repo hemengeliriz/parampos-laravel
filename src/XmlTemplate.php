@@ -6,6 +6,7 @@ class XmlTemplate
 {
     public const PAYMENT = 'payment';
     public const HASH = 'hash';
+    public const SAVE_CARD = 'save_card';
 
     public static function generateTemplate($template, $properties = [])
     {

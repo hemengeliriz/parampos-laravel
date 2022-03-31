@@ -51,4 +51,14 @@ class Card extends BaseType
     {
         $this->setProperty(Parameter::KK_Sahibi_GSM, $cardOwnerPhone);
     }
+
+    public function saveCard($name = "")
+    {
+        $baseUrl = (config('parampos-laravel.test_mode', false) ? Payment::TEST_SAVE_CARD_BASE_URL : Payment::PROD_SAVE_CARD_BASE_URL);
+        $this->addProperties((new Auth())->getProperties());
+        $this->setProperty(Parameter::KK_Kart_Adi, $name);
+        $template = XmlTemplate::generateTemplate(XmlTemplate::SAVE_CARD, $this->getProperties());
+
+        return (new Request())->sendRequest($baseUrl, $template, 'KS_Kart_Ekle');
+    }
 }

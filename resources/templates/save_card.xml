@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?> <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"> <soap:Body>
+    <KS_Kart_Ekle xmlns="https://turkpara.com.tr/">
+        <G>
+            <CLIENT_CODE></CLIENT_CODE>
+            <CLIENT_USERNAME></CLIENT_USERNAME>
+            <CLIENT_PASSWORD></CLIENT_PASSWORD>
+        </G>
+        <GUID></GUID>
+        <KK_Sahibi></KK_Sahibi>
+        <KK_No></KK_No>
+        <KK_SK_Ay></KK_SK_Ay>
+        <KK_SK_Yil></KK_SK_Yil>
+        <KK_Kart_Adi></KK_Kart_Adi>
+        <KK_Islem_ID></KK_Islem_ID>
+    </KS_Kart_Ekle>
+</soap:Body>
+</soap:Envelope>
