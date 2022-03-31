@@ -39,6 +39,7 @@ class Payment extends BaseType
         $this->setProperty(Parameter::Islem_Hash, static::hash());
 
         $template = XmlTemplate::generateTemplate(XmlTemplate::PAYMENT, $this->getProperties());
+
         return (new Request())->sendRequest($this->baseUrl, $template, 'Pos_Odeme');
     }
 
@@ -74,7 +75,7 @@ class Payment extends BaseType
         $hash .= $this->getProperty(Parameter::Basarili_URL);
 
         $template = XmlTemplate::generateTemplate(XmlTemplate::HASH, ['Data' => $hash]);
+
         return (new Request())->sendRequest($this->baseUrl, $template, 'SHA2B64');
     }
-
 }

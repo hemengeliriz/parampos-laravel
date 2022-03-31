@@ -13,6 +13,7 @@ class XmlTemplate
         foreach ($properties as $property => $value) {
             $template = str_replace("<$property></$property>", "<$property>$value</$property>", $template);
         }
+
         return $template;
     }
 }

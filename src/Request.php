@@ -23,8 +23,8 @@ class Request
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => $xml,
             CURLOPT_HTTPHEADER => [
-                'Content-type: text/xml'
-            ]
+                'Content-type: text/xml',
+            ],
         ]);
         $result = curl_exec($ch);
         curl_close($ch);
@@ -33,12 +33,14 @@ class Request
         if (method_exists($this, $methodName)) {
             $result = $this->$methodName($result);
         }
+
         return $result;
     }
 
     private function parseSHA2B64Response($response)
     {
         preg_match("'<SHA2B64Result>(.*?)</SHA2B64Result>'si", $response, $match);
+
         return $match[1];
     }
 
@@ -55,6 +57,7 @@ class Request
         $res['Sonuc_Str'] = $match[1];
         preg_match("'<Banka_Sonuc_Kod>(.*?)</Banka_Sonuc_Kod>'si", $response, $match);
         $res['Banka_Sonuc_Kod'] = $match[1];
+
         return $res;
     }
 }

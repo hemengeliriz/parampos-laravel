@@ -45,6 +45,7 @@ abstract class BaseType
         foreach ($properties as $property) {
             $result[$property] = $this->getProperty($property);
         }
+
         return $result;
     }
 }

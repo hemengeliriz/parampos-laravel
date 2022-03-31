@@ -3,7 +3,6 @@
 use Hemengeliriz\ParamposLaravel\Card;
 use Hemengeliriz\ParamposLaravel\Payment;
 use Hemengeliriz\ParamposLaravel\PaymentDetail;
-use Illuminate\Support\Str;
 
 it('can test', function () {
     $card = new Card();
