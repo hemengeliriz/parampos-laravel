@@ -2,9 +2,9 @@
 
 namespace Hemengeliriz\ParamposLaravel\Tests;
 
+use Hemengeliriz\ParamposLaravel\ParamposLaravelServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Hemengeliriz\ParamposLaravel\ParamposLaravelServiceProvider;
 
 class TestCase extends Orchestra
 {
