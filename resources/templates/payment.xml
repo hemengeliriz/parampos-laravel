@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <Pos_Odeme xmlns="https://turkpos.com.tr/">
+            <G>
+                <CLIENT_CODE></CLIENT_CODE>
+                <CLIENT_USERNAME></CLIENT_USERNAME>
+                <CLIENT_PASSWORD></CLIENT_PASSWORD>
+            </G>
+            <GUID></GUID>
+            <KK_Sahibi></KK_Sahibi>
+            <KK_No></KK_No>
+            <KK_SK_Ay></KK_SK_Ay>
+            <KK_SK_Yil></KK_SK_Yil>
+            <KK_CVC></KK_CVC>
+            <KK_Sahibi_GSM></KK_Sahibi_GSM>
+            <Hata_URL></Hata_URL>
+            <Basarili_URL></Basarili_URL>
+            <Siparis_ID></Siparis_ID>
+            <Siparis_Aciklama></Siparis_Aciklama>
+            <Taksit></Taksit>
+            <Islem_Tutar></Islem_Tutar>
+            <Toplam_Tutar></Toplam_Tutar>
+            <Islem_Hash></Islem_Hash>
+            <Islem_Guvenlik_Tip></Islem_Guvenlik_Tip>
+            <Islem_ID></Islem_ID>
+            <IPAdr></IPAdr>
+            <Ref_URL></Ref_URL>
+            <Data1></Data1>
+            <Data2></Data2>
+            <Data3></Data3>
+            <Data4></Data4>
+            <Data5></Data5>
+            <Data6></Data6>
+            <Data7></Data7>
+            <Data8></Data8>
+            <Data9></Data9>
+            <Data10></Data10>
+        </Pos_Odeme>
+    </soap:Body>
+</soap:Envelope>
