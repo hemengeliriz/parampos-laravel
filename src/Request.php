@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 class Request
 {
-    public function sendRequest($baseUrl, $xml, $extraRequestMethod = null): bool|string|array
+    public function sendRequest($baseUrl, $xml, $extraRequestMethod = null)
     {
         $baseUrl = $baseUrl . ($extraRequestMethod ? "&op=" . $extraRequestMethod : "");
 

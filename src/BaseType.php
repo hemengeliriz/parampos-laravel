@@ -12,7 +12,7 @@ abstract class BaseType
         $this->properties = $properties;
     }
 
-    public function setProperty(string $property, $value): static
+    public function setProperty(string $property, $value)
     {
         if ($value !== null && $value !== '') {
             $this->properties[$property] = $value;
@@ -21,7 +21,7 @@ abstract class BaseType
         return $this;
     }
 
-    public function addProperties(array $properties): static
+    public function addProperties(array $properties)
     {
         foreach ($properties as $property => $value) {
             $this->setProperty($property, $value);

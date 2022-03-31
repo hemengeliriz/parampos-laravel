@@ -7,7 +7,7 @@ class XmlTemplate
     public const PAYMENT = 'payment';
     public const HASH = 'hash';
 
-    public static function generateTemplate($template, $properties = []): array|bool|string
+    public static function generateTemplate($template, $properties = [])
     {
         $template = file_get_contents(__DIR__ . "/../resources/templates/$template.xml");
         foreach ($properties as $property => $value) {

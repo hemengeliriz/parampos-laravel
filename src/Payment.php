@@ -4,8 +4,8 @@ namespace Hemengeliriz\ParamposLaravel;
 
 class Payment extends BaseType
 {
-    private const PROD_BASE_URL = 'https://posws.param.com.tr/turkpos.ws/service_turkpos_prod.asmx?wsdl';
-    private const TEST_BASE_URL = 'https://test-dmz.param.com.tr:4443/turkpos.ws/service_turkpos_test.asmx?wsdl';
+    public const PROD_BASE_URL = 'https://posws.param.com.tr/turkpos.ws/service_turkpos_prod.asmx?wsdl';
+    public const TEST_BASE_URL = 'https://test-dmz.param.com.tr:4443/turkpos.ws/service_turkpos_test.asmx?wsdl';
 
     protected ?Card $card;
     protected ?PaymentDetail $paymentDetail;
@@ -21,12 +21,9 @@ class Payment extends BaseType
         $this->successUrl = $successUrl;
         $this->failureUrl = $failureUrl;
 
-        $this->baseUrl = (config('parampos-laravel.test_mode', false) ? static::TEST_BASE_URL : static::PROD_BASE_URL);
+        $this->baseUrl = (config('parampos-laravel.test_mode', false) ? self::TEST_BASE_URL : self::PROD_BASE_URL);
 
-        $this->setProperty(Parameter::CLIENT_CODE, config('parampos-laravel.client_code'));
-        $this->setProperty(Parameter::CLIENT_USERNAME, config('parampos-laravel.client_username'));
-        $this->setProperty(Parameter::CLIENT_PASSWORD, config('parampos-laravel.client_password'));
-        $this->setProperty(Parameter::GUID, config('parampos-laravel.guid'));
+        $this->addProperties((new Auth())->getProperties());
     }
 
     public function pay()
@@ -36,7 +33,7 @@ class Payment extends BaseType
         $this->setProperty(Parameter::Basarili_URL, $this->successUrl);
         $this->setProperty(Parameter::Hata_URL, $this->failureUrl);
         $this->setProperty(Parameter::Ref_URL, "https://param.com.tr");
-        $this->setProperty(Parameter::Islem_Hash, static::hash());
+        $this->setProperty(Parameter::Islem_Hash, self::hash());
 
         $template = XmlTemplate::generateTemplate(XmlTemplate::PAYMENT, $this->getProperties());
 
