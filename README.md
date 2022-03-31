@@ -11,15 +11,15 @@ Hata tespit ederseniz `Pull Request` gönderebilirsiniz. [ParamPos API Döküman
 
 **Bu paket geliştirme aşamasındadır. Geliştirme tamamlandığında detaylar paylaşılacaktır.**
 
-## Installation
+## Kurulum
 
-You can install the package via composer:
+Composer ile kurulum yapmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```bash
 composer require hemengeliriz/parampos-laravel
 ```
 
-You can publish the config file with:
+Config dosyalarını yayınlamak için aşağıdaki komutu kullanabilirsiniz:
 
 ```bash
 php artisan vendor:publish --tag="parampos-laravel-config"
@@ -29,8 +29,8 @@ php artisan vendor:publish --tag="parampos-laravel-config"
 
 - [hemengeliriz](https://github.com/hemengeliriz)
 - [ArdaGnsrn (Arda Günsüren)](https://github.com/ArdaGnsrn)
-- [All Contributors](../../contributors)
+- [Tüm Katkıda Bulunanlar](../../contributors)
 
-## License
+## Lisans
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Detaylı bilgilendirme için [Lisans](LICENSE.md) dosyasını inceleyin.
