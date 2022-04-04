@@ -28,7 +28,7 @@ class Request
             $result = $this->$methodName($response);
         }
 
-        return $result;
+        return $result ?? $response;
     }
 
     private function parseSHA2B64Response($response)
@@ -39,5 +39,10 @@ class Request
     private function parsePosOdemeResponse($response)
     {
         return $response['Pos_OdemeResponse']['Pos_OdemeResult'];
+    }
+
+    private function parseKSKartEkleResponse($response)
+    {
+        return $response['KS_Kart_EkleResponse']['KS_Kart_EkleResult'];
     }
 }

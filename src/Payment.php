@@ -7,8 +7,8 @@ class Payment extends BaseType
     public const PROD_BASE_URL = 'https://posws.param.com.tr/turkpos.ws/service_turkpos_prod.asmx?wsdl';
     public const TEST_BASE_URL = 'https://test-dmz.param.com.tr:4443/turkpos.ws/service_turkpos_test.asmx?wsdl';
 
-    public const PROD_SAVE_CARD_BASE_URL = 'https://posws.param.com.tr/out.ws/service_ks.asmx';
-    public const TEST_SAVE_CARD_BASE_URL = 'https://test-dmz.param.com.tr:4443/out.ws/service_ks.asmx';
+    public const PROD_SAVE_CARD_BASE_URL = 'https://posws.param.com.tr/out.ws/service_ks.asmx?wsdl';
+    public const TEST_SAVE_CARD_BASE_URL = 'https://test-dmz.param.com.tr:4443/out.ws/service_ks.asmx?wsdl';
 
     protected ?Card $card;
     protected ?PaymentDetail $paymentDetail;
