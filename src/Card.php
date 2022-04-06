@@ -4,7 +4,6 @@ namespace Hemengeliriz\ParamposLaravel;
 
 class Card extends BaseType
 {
-
     public bool $isSavedCard = false;
 
     /**
