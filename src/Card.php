@@ -4,6 +4,9 @@ namespace Hemengeliriz\ParamposLaravel;
 
 class Card extends BaseType
 {
+
+    public bool $isSavedCard = false;
+
     /**
      * Kredi Kartı Sahibi
      * @param $cardOwner
@@ -50,6 +53,17 @@ class Card extends BaseType
     public function setCardOwnerPhone($cardOwnerPhone)
     {
         $this->setProperty(Parameter::KK_Sahibi_GSM, $cardOwnerPhone);
+    }
+
+    public function setSavedCardId($ksGuid)
+    {
+        $this->isSavedCard = true;
+        $this->setProperty(Parameter::KS_GUID, $ksGuid);
+    }
+
+    public function setIsSavedCard(bool $isSavedCard)
+    {
+        $this->isSavedCard = $isSavedCard;
     }
 
     public function saveCard($name = "")

@@ -45,4 +45,9 @@ class Request
     {
         return $response['KS_Kart_EkleResponse']['KS_Kart_EkleResult'];
     }
+
+    private function parseKSTahsilatResponse($response)
+    {
+        return $response['KS_TahsilatResponse']['KS_TahsilatResult'];
+    }
 }

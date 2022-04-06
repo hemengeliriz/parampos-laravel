@@ -5,6 +5,7 @@ namespace Hemengeliriz\ParamposLaravel;
 class XmlTemplate
 {
     public const PAYMENT = 'payment';
+    public const KS_PAYMENT = 'ks_payment';
     public const HASH = 'hash';
     public const SAVE_CARD = 'save_card';
 

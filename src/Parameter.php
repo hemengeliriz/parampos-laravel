@@ -37,4 +37,5 @@ class Parameter
     public const CLIENT_USERNAME = 'CLIENT_USERNAME';
     public const CLIENT_PASSWORD = 'CLIENT_PASSWORD';
     public const KK_Kart_Adi = 'KK_Kart_Adi';
+    public const KS_GUID = 'KS_GUID';
 }

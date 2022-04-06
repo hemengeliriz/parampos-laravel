@@ -16,6 +16,7 @@ class Payment extends BaseType
     protected ?string $failureUrl;
 
     protected ?string $baseUrl;
+    protected ?string $savedCardBaseUrl;
 
     public function __construct(Card $card = null, PaymentDetail $paymentDetail = null, $successUrl = null, $failureUrl = null)
     {
@@ -25,6 +26,7 @@ class Payment extends BaseType
         $this->failureUrl = $failureUrl;
 
         $this->baseUrl = (config('parampos-laravel.test_mode', false) ? self::TEST_BASE_URL : self::PROD_BASE_URL);
+        $this->savedCardBaseUrl = (config('parampos-laravel.test_mode', false) ? self::TEST_SAVE_CARD_BASE_URL : self::PROD_SAVE_CARD_BASE_URL);
 
         $this->addProperties((new Auth())->getProperties());
     }
@@ -38,9 +40,14 @@ class Payment extends BaseType
         $this->setProperty(Parameter::Ref_URL, "https://param.com.tr");
         $this->setProperty(Parameter::Islem_Hash, self::hash());
 
-        $template = XmlTemplate::generateTemplate(XmlTemplate::PAYMENT, $this->getProperties());
+        $isSavedCard = $this->card->isSavedCard;
+        $template = ($isSavedCard ? XmlTemplate::KS_PAYMENT : XmlTemplate::PAYMENT);
+        $requestMethod = ($isSavedCard ? 'KS_Tahsilat' : 'Pos_Odeme');
+        $baseUrl = ($isSavedCard ? $this->savedCardBaseUrl : $this->baseUrl);
 
-        return (new Request())->sendRequest($this->baseUrl, $template, 'Pos_Odeme');
+        $template = XmlTemplate::generateTemplate($template, $this->getProperties());
+
+        return (new Request())->sendRequest($baseUrl, $template, $requestMethod);
     }
 
     public function setCard(Card $card)
