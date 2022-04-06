@@ -12,6 +12,11 @@
         {
             "name": "hemengeliriz",
             "email": "dev@hemengeliriz.com",
+            "role": "Owner"
+        },
+        {
+            "name": "Arda Günsüren",
+            "email": "info@ardagunsuren.com",
             "role": "Developer"
         }
     ],
