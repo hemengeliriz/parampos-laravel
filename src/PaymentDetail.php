@@ -21,12 +21,12 @@ class PaymentDetail extends BaseType
 
     public function setOrderAmount(float $amount)
     {
-        $this->setProperty(Parameter::Islem_Tutar, number_format($amount, 2, ',', '.'));
+        $this->setProperty(Parameter::Islem_Tutar, number_format($amount, 2, ',', ''));
     }
 
     public function setTotalAmount(float $amount)
     {
-        $this->setProperty(Parameter::Toplam_Tutar, number_format($amount, 2, ',', '.'));
+        $this->setProperty(Parameter::Toplam_Tutar, number_format($amount, 2, ',', ''));
     }
 
     public function setIpAddress($ipAddress)
