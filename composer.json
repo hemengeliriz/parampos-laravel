@@ -18,6 +18,11 @@
             "name": "Arda Günsüren",
             "email": "info@ardagunsuren.com",
             "role": "Developer"
+        },
+        {
+            "name": "Fatih Özpolat",
+            "email": "fatiho@hemengeliriz.com",
+            "role": "Developer"
         }
     ],
     "require": {

@@ -29,6 +29,7 @@ php artisan vendor:publish --tag="parampos-laravel-config"
 
 - [hemengeliriz](https://github.com/hemengeliriz)
 - [ArdaGnsrn (Arda Günsüren)](https://github.com/ArdaGnsrn)
+- [fatihozpolat (Fatih Özpolat)](https://github.com/fatihozpolat)
 - [Tüm Katkıda Bulunanlar](../../contributors)
 
 ## Lisans
