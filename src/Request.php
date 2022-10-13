@@ -9,26 +9,22 @@ class Request
 {
     public function sendRequest($baseUrl, $xml, $extraRequestMethod = null)
     {
-        $baseUrl = $baseUrl . ($extraRequestMethod ? "&op=" . $extraRequestMethod : "");
-
-        $client = new Client();
-        $response = $client->request('POST', $baseUrl, [
-            'headers' => [
-                'Content-Type' => 'text/xml',
-            ],
-            'body' => $xml,
-        ]);
-
-        $response = $response->getBody()->getContents();
+          $baseUrl = $baseUrl . ($extraRequestMethod ? "&op=" . $extraRequestMethod : "");
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $baseUrl);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: text/xml"));
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+        $response = curl_exec($ch);
         $response = strtr($response, ['</soap:' => '</', '<soap:' => '<']);
         $response = json_decode(json_encode(simplexml_load_string($response)), true)['Body'];
-
         $methodName = Str::camel("parse" . $extraRequestMethod . "Response");
         if (method_exists($this, $methodName)) {
-            $result = $this->$methodName($response);
+            $response = $this->$methodName($response);
         }
-
-        return $result ?? $response;
+        return  $response;
     }
 
     private function parseSHA2B64Response($response)
