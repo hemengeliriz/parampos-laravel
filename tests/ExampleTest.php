@@ -6,14 +6,14 @@ use Hemengeliriz\ParamposLaravel\PaymentDetail;
 
 it('can test', function () {
     $card = new Card();
-//    $card->setCardOwner('John Doe');
-//    $card->setCardNumber('4546711234567894');
-//    $card->setCardExpireDate(12, 2026);
-//    $card->setCardCvc("000");
+    //    $card->setCardOwner('John Doe');
+    //    $card->setCardNumber('4546711234567894');
+    //    $card->setCardExpireDate(12, 2026);
+    //    $card->setCardCvc("000");
 
     $card->setSavedCardId("c1bf3fd4-c188-4bb8-a838-92c9af82af2f");
 
-//    dd($card->saveCard("Test"));
+    //    dd($card->saveCard("Test"));
 
 
     $paymentDetails = new PaymentDetail();
